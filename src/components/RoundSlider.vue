@@ -180,7 +180,7 @@ export default {
       return this.circleWidth || this.side / 2 / this.circleWidthRel
     },
     cpPathDirection() {
-      return this.cpAngle < (3 / 2) * Math.PI ? 0 : 1
+      return this.cpAngle < (3 / 2) * Math.PI ? 1 : 0
     },
     cpPathX() {
       return this.cpCenter + this.radius * Math.cos(this.cpAngle)
@@ -197,7 +197,7 @@ export default {
     cpPathD() {
       let parts = []
       parts.push('M' + this.cpCenter)
-      parts.push(this.cpCenter + this.radius)
+      parts.push(this.cpCenter - this.radius)
       parts.push('A')
       parts.push(this.radius)
       parts.push(this.radius)
