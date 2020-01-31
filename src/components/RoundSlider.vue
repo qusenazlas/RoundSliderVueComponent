@@ -180,13 +180,13 @@ export default {
       return this.circleWidth || this.side / 2 / this.circleWidthRel
     },
     cpPathDirection() {
-      return this.cpAngle < (3 / 2) * Math.PI ? 1 : 0
+      return this.cpAngle < (3 / 2) * Math.PI ? 0 : 1
     },
     cpPathX() {
-      return this.cpCenter + this.radius * Math.cos(this.cpAngle)
+      return this.cpCenter - this.radius * Math.cos(this.cpAngle)
     },
     cpPathY() {
-      return this.cpCenter + this.radius * Math.sin(this.cpAngle)
+      return this.cpCenter - this.radius * Math.sin(this.cpAngle)
     },
     cpPathStrokeWidth() {
       return this.progressWidth || this.side / 2 / this.progressWidthRel

@@ -1,7 +1,7 @@
 export default class CircleSliderState {
   /*
    */
-  constructor (steps, offset, initialValue) {
+  constructor(steps, offset, initialValue) {
     this.steps = steps
     this.offset = offset
     this.currentStepIndex = 0
@@ -18,28 +18,30 @@ export default class CircleSliderState {
 
   /*
    */
-  get angleUnit () {
+  get angleUnit() {
     return (Math.PI * 2 - this.offset) / this.length
   }
 
   /*
    */
-  get angleValue () {
-    return (Math.min(
-      this.offset + this.angleUnit * this.currentStepIndex,
-      Math.PI * 2 - Number.EPSILON
-    )) - 0.00001 // correct for 100% value
+  get angleValue() {
+    return (
+      Math.min(
+        this.offset + this.angleUnit * this.currentStepIndex,
+        Math.PI * 2 - Number.EPSILON
+      ) - 0.00001
+    ) // correct for 100% value
   }
 
   /*
    */
-  get currentStep () {
+  get currentStep() {
     return this.steps[this.currentStepIndex]
   }
 
   /*
    */
-  updateCurrentStepFromValue (value) {
+  updateCurrentStepFromValue(value) {
     for (let i = 0; i < this.length; i++) {
       if (value <= this.steps[i]) {
         this.currentStepIndex = i
@@ -52,7 +54,7 @@ export default class CircleSliderState {
 
   /*
    */
-  updateCurrentStepFromAngle (angle) {
+  updateCurrentStepFromAngle(angle) {
     const stepIndex = Math.round((angle - this.offset) / this.angleUnit)
     this.currentStepIndex = Math.min(Math.max(stepIndex, 0), this.length)
   }
